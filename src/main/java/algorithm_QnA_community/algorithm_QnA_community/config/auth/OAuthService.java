@@ -1,8 +1,8 @@
 package algorithm_QnA_community.algorithm_QnA_community.config.auth;
 
+import algorithm_QnA_community.algorithm_QnA_community.domain.member.Member;
+import algorithm_QnA_community.algorithm_QnA_community.domain.member.Role;
 import algorithm_QnA_community.algorithm_QnA_community.domain.response.MemberInfoRes;
-import algorithm_QnA_community.algorithm_QnA_community.domain.Member;
-import algorithm_QnA_community.algorithm_QnA_community.domain.Role;
 import algorithm_QnA_community.algorithm_QnA_community.domain.dto.AccessTokenAndRefreshUUID;
 import algorithm_QnA_community.algorithm_QnA_community.domain.dto.ResponseTokenAndMember;
 import algorithm_QnA_community.algorithm_QnA_community.repository.MemberRepository;
@@ -32,6 +32,7 @@ import java.util.UUID;
  * ========================================================
  * DATE             AUTHOR          NOTE
  * 2023/04/20       janguni         최초 생성
+ *
  */
 
 
@@ -64,7 +65,7 @@ public class OAuthService {
         //MemberInfoRes memberInfo = getMemberInfo("fake", state);
         log.info("memberInfo= {}", memberInfo);
         // 처음 로그인을 시도한 사용자라면 회원가입 처리
-        Optional<Member> findMember = memberRepository.findByEmail(memberInfo.getName());
+        Optional<Member> findMember = memberRepository.findByEmail(memberInfo.getEmail());
         if (findMember.isEmpty()){
             Member member = Member.createMember()
                     .email(memberInfo.getEmail())

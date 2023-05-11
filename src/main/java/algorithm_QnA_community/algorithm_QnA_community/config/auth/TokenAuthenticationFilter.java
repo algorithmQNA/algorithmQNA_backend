@@ -1,13 +1,12 @@
 package algorithm_QnA_community.algorithm_QnA_community.config.auth;
 
 import algorithm_QnA_community.algorithm_QnA_community.config.Exception.TokenAuthenticationException;
-import algorithm_QnA_community.algorithm_QnA_community.domain.Member;
+import algorithm_QnA_community.algorithm_QnA_community.domain.member.Member;
 import algorithm_QnA_community.algorithm_QnA_community.domain.response.MemberInfoRes;
 import algorithm_QnA_community.algorithm_QnA_community.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,9 +19,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Optional;
 
 /**
  * packageName      : algorithm_QnA_community.algorithm_QnA_community.config.auth
@@ -137,6 +133,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter implements I
 
     // authentication 객체 생성
     private void createAuthentication(Member member) {
+
         PrincipalDetails principalDetails = new PrincipalDetails(member);
         Authentication authentication = new UsernamePasswordAuthenticationToken(principalDetails, null, principalDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);

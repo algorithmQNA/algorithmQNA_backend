@@ -1,8 +1,5 @@
 package algorithm_QnA_community.algorithm_QnA_community.config.auth;
 
-import algorithm_QnA_community.algorithm_QnA_community.domain.Member;
-import algorithm_QnA_community.algorithm_QnA_community.repository.MemberRepository;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,7 +12,6 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 /**
  * packageName      : algorithm_QnA_community.algorithm_QnA_community.config.auth
