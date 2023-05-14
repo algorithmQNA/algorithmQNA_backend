@@ -1,6 +1,5 @@
 package algorithm_QnA_community.algorithm_QnA_community.config.auth;
 
-
 import algorithm_QnA_community.algorithm_QnA_community.domain.response.ResponseMessage;
 import algorithm_QnA_community.algorithm_QnA_community.domain.response.DefStatus;
 import algorithm_QnA_community.algorithm_QnA_community.domain.response.MemberInfoRes;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 
 /**
@@ -120,7 +118,6 @@ public class OAuthController {
 
 
     // ====================== 임시용 ====================== //
-
     @GetMapping("/google/callback")
     public ResponseEntity<CodeAndState> callback(@RequestParam String code, @RequestParam String state){
         CodeAndState codeAndState = new CodeAndState(code, state);
@@ -131,7 +128,6 @@ public class OAuthController {
     @GetMapping("/test")
     public ResponseEntity<String> test(@AuthenticationPrincipal PrincipalDetails principal){
         log.info("email={}", principal.getMember().getEmail());
-
         return ResponseEntity.status(HttpStatus.OK)
                 .body("성공!!");
     }

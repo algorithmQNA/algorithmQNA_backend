@@ -1,6 +1,7 @@
 package algorithm_QnA_community.algorithm_QnA_community.config.auth;
 
-import algorithm_QnA_community.algorithm_QnA_community.config.Exception.TokenAuthenticationException;
+
+import algorithm_QnA_community.algorithm_QnA_community.config.exception.TokenAuthenticationException;
 import algorithm_QnA_community.algorithm_QnA_community.domain.member.Member;
 import algorithm_QnA_community.algorithm_QnA_community.domain.response.MemberInfoRes;
 import algorithm_QnA_community.algorithm_QnA_community.repository.MemberRepository;
@@ -43,6 +44,7 @@ import java.io.IOException;
  * ========================================================
  * DATE             AUTHOR          NOTE
  * 2023/05/02       janguni         최초 생성
+ * 2023/05/10        solmin         [리뷰 부탁!!!] 토큰 없을 때 그냥 패싱
  */
 
 
@@ -108,7 +110,10 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter implements I
             // accessToken과 refreshUUID 둘 중 하나라도 없을 경우
             else {
                 log.info("토큰 빠트림");
-                throw new TokenAuthenticationException("토큰예외"); // Exception!
+//                throw new TokenAuthenticationException("토큰예외"); // Exception!
+                //이후로도 토큰정보 없으면 filter passing하고 SecurityConfig로 막는게 나을듯
+                filterChain.doFilter(request,response);
+                return;
             }
 
             // Cookie에 accessToken, refreshUUID 값 담음
