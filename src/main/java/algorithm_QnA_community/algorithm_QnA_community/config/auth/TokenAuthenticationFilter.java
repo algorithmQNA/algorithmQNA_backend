@@ -1,6 +1,5 @@
 package algorithm_QnA_community.algorithm_QnA_community.config.auth;
 
-
 import algorithm_QnA_community.algorithm_QnA_community.config.exception.TokenAuthenticationException;
 import algorithm_QnA_community.algorithm_QnA_community.domain.member.Member;
 import algorithm_QnA_community.algorithm_QnA_community.domain.response.MemberInfoRes;
