@@ -144,6 +144,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter implements I
 
     // authentication 객체 생성
     private void createAuthentication(Member member) {
+
         PrincipalDetails principalDetails = new PrincipalDetails(member);
         Authentication authentication = new UsernamePasswordAuthenticationToken(principalDetails, null, principalDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);

@@ -32,6 +32,7 @@ import java.util.UUID;
  * ========================================================
  * DATE             AUTHOR          NOTE
  * 2023/04/20       janguni         최초 생성
+ *
  */
 
 
@@ -64,7 +65,7 @@ public class OAuthService {
         //MemberInfoRes memberInfo = getMemberInfo("fake", state);
         log.info("memberInfo= {}", memberInfo);
         // 처음 로그인을 시도한 사용자라면 회원가입 처리
-        Optional<Member> findMember = memberRepository.findByEmail(memberInfo.getName());
+        Optional<Member> findMember = memberRepository.findByEmail(memberInfo.getEmail());
         if (findMember.isEmpty()){
             Member member = Member.createMember()
                     .email(memberInfo.getEmail())

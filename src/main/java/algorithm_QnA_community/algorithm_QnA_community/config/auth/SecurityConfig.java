@@ -64,8 +64,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    private final RedisTemplate redisTemplate;
 
 
+/**
     // == code 필요할 때 (시작)== //
-    /**
+
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(
@@ -106,6 +107,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) {
         web.ignoring().antMatchers(
                 "/",
+                "/glogin",
                 "/login/**",
                 "/auth/not-secured",
                 "/auth/deleteCookie"
@@ -125,7 +127,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
         .addFilterBefore(new ExceptionHandlerFilter(), tokenAuthenticationFilter().getClass());
     }
-//**/
+////**/
 
     // == 실제 운영 (끝) == //
 
